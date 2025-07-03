@@ -5,7 +5,7 @@ import os
 
 # ENVIRONMENT VARIABLES
 DISCORD_TOKEN = os.getenv("VISION_MONITOR_BOT_TOKEN")
-STATUS_CHANNEL_ID = int(os.getenv("STATUS_CHANNEL_ID"))  # Channel ID where !status should work
+STATUS_CHANNEL_ID = int(os.getenv("STATUS_CHANNEL_ID"))
 
 # SERVICE LINKS
 BOT_SERVICES = {
@@ -39,7 +39,7 @@ async def status(ctx):
         try:
             res = requests.get(url, timeout=10)
             status = "🟢 Online" if res.status_code == 200 else f"🔴 Error ({res.status_code})"
-        except Exception as e:
+        except:
             status = "🔴 Offline"
 
         embed.add_field(name=name, value=status, inline=False)
